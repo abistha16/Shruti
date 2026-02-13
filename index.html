@@ -28,7 +28,7 @@
             position: absolute;
             top: 15%;
             left: -150px;
-            width: 80px;
+            width: 64px;
             z-index: 100;
             animation: flyAcross 5s linear forwards;
             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
@@ -62,20 +62,20 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* --- ENVELOPE CONTAINER (DOUBLED SIZE) --- */
+        /* --- ENVELOPE CONTAINER (SCALED DOWN) --- */
         .delivery-container {
             position: relative;
             perspective: 2000px;
             opacity: 0;
-            /* Scaled up from original dimensions */
-            width: 600px; 
-            height: 400px;
-            transform: translateY(-500px);
+            /* Scaled down for mobile */
+            width: 480px; 
+            height: 320px;
+            transform: translateY(-400px);
             animation: dropAndGrow 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.2s forwards;
         }
 
         @keyframes dropAndGrow {
-            0% { opacity: 0; transform: translateY(-300px) scale(0.5) rotate(15deg); }
+            0% { opacity: 0; transform: translateY(-240px) scale(0.5) rotate(15deg); }
             100% { opacity: 1; transform: translateY(50px) scale(1) rotate(0deg); }
         }
 
@@ -87,7 +87,7 @@
             position: relative;
             cursor: pointer;
             border-radius: 8px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.3);
         }
 
         .flap {
@@ -95,9 +95,9 @@
             top: 0;
             width: 0;
             height: 0;
-            border-left: 300px solid transparent;
-            border-right: 300px solid transparent;
-            border-top: 220px solid var(--envelope-dark);
+            border-left: 240px solid transparent;
+            border-right: 240px solid transparent;
+            border-top: 176px solid var(--envelope-dark);
             transform-origin: top;
             transition: transform 0.8s ease;
             z-index: 10;
@@ -106,10 +106,10 @@
         /* --- THE TWO-PANEL CARD --- */
         .card {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 560px;
-            height: 360px;
+            top: 16px;
+            left: 16px;
+            width: 448px;
+            height: 288px;
             background: #ff69b4;
             display: flex;
             transform: translateY(0);
@@ -134,14 +134,14 @@
         /* Right side (Message) */
         .card-right {
             flex: 1;
-            padding: 40px;
+            padding: 32px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             background: #ffb3ba;
-            font-size: 1.4rem; /* Larger font for larger card */
+            font-size: 1.2rem; /* Smaller font for mobile */
             color: #333;
         }
 
@@ -153,20 +153,20 @@
 
         .delivery-container.open .card {
             visibility: visible;
-            transform: translateY(-320px); /* Lifts higher because it's bigger */
+            transform: translateY(-256px); /* Lifts higher because it's smaller */
             z-index: 20;
             animation: unfoldEffect 1s ease 1.2s forwards;
         }
 
         @keyframes unfoldEffect {
-            0% { transform: translateY(-320px) scaleX(0.5); }
-            100% { transform: translateY(-320px) scaleX(1); }
+            0% { transform: translateY(-256px) scaleX(0.5); }
+            100% { transform: translateY(-256px) scaleX(1); }
         }
 
         /* --- BEATING HEART --- */
         .heart {
-            width: 120px;
-            height: 120px;
+            width: 96px;
+            height: 96px;
             background: var(--heart-red);
             position: relative;
             transform: rotate(-45deg);
@@ -174,20 +174,20 @@
         }
         .heart::before, .heart::after {
             content: "";
-            width: 120px;
-            height: 120px;
+            width: 96px;
+            height: 96px;
             background: var(--heart-red);
             border-radius: 50%;
             position: absolute;
         }
-        .heart::before { top: -60px; left: 0; }
-        .heart::after { left: 60px; top: 0; }
+        .heart::before { top: -48px; left: 0; }
+        .heart::after { left: 48px; top: 0; }
 
         .heart img {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            clip-path: path('M60 22.095c-14.13-28.475-59.995-20.32-59.995 16.35 0 36.35 49.515 54.69 59.995 76.555 10.48-21.865 59.995-40.205 59.995-76.555 0-36.635-45.85-44.86-59.995-16.35z');
+            width: 85px;
+            height: 85px;
+            clip-path: path('M48 88C16 60 0 42 0 24 0 10 10 0 24 0c10 0 18 6 24 12 6-6 14-12 24-12 14 0 24 10 24 24 0 18-16 36-48 64z');
             top: 0px;
             left: 0px;
             transform: rotate(45deg);
